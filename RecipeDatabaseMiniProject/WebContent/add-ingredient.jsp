@@ -31,22 +31,31 @@ a:active {
 </style>
 <meta charset="ISO-8859-1">
 <title>Add an Ingredient to a Recipe</title>
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 </head>
 <body>
 	<!-- Create a form with all the instance variables from RecipeInfo to allow the user to add to the database. -->
-	Recipe Name:	<input type="text" value="${recipeName }" readonly>
+	Recipe Name:	<input id="in1" type="text" value="${recipeName }" readonly>
 	<form action="addIngredientServlet" method="post">
 		<input type=hidden name="recipeIDToAdd" value="${recipeToEdit}">
-		Ingredient Quantity: <input type="text" name="ingredientQuantity">
-		<br> Ingredient Name: <input type="text" name="ingredientName">
+		Ingredient Quantity: <input type="text" name="ingredientQuantity" onkeyup="enableButtons()">
+		<br> Ingredient Name: <input type="text" name="ingredientName" onkeyup="enableButtons()">
 		<br> Ingredient Sort Order: <input type="text"
-			name="ingredientSortOrder"> <br> <input type="submit"
-			value="Add Ingredient">
+			name="ingredientSortOrder" onkeyup="enableButtons()"> 
+			<br> 
+			<input class="ingrbtn" type="submit" value="Add Ingredient">
 	</form>
+	<script>type="text/javascript"
+		function enableButtons() {
+		$('.ingrbtn').prop('disabled',false);
+	}</script>
+	
 	<br />
 	<!-- Link to return to the recipe's database. -->
 	<p>
 		<a href="viewAllRecipesServlet">Return Back to the List of Recipes</a>
 	</p>
 </body>
+<script type="text/javascript" src="ingredients.js"></script>
 </html>

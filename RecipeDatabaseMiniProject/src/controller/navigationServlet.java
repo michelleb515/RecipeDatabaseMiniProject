@@ -51,7 +51,6 @@ public class navigationServlet extends HttpServlet {
 					try {
 						// Get the ingredientID and pass it to the search function.
 						Integer ingredientID = Integer.parseInt(request.getParameter("ingredientID"));
-						System.out.println("~~~~~navigationServlet:DeleteIngredient:  ingredientId = " + ingredientID);
 						Ingredients ingredientToDelete = ih.searchForIngredientsByID(ingredientID);
 
 						
@@ -133,11 +132,9 @@ public class navigationServlet extends HttpServlet {
 		else if (act.equals("View Ingredients")) {
 
 			try {
-				System.out.println("~~~~~NavigationServlet:ViewIngredients");
 				// Get the id, pass it to the search function, then send the results to
 				// view-ingredients.jsp in the form of an attribute.
 				Integer recipeID = Integer.parseInt(request.getParameter("recipeID"));
-				System.out.println("~~~~~NavigationServlet:ViewIngredient: recipeID = " + recipeID);
 				
 				RecipeInfo ri = rh.searchForRecipeByID(recipeID); 
 				
@@ -152,10 +149,8 @@ public class navigationServlet extends HttpServlet {
 			}
 		} else if (act.equals("Add Ingredient")) {
 			try {
-				System.out.println("~~~~~NavigationServlet:AddIngredient");
 				// Get the recipeId
 				Integer recipeIDToView = Integer.parseInt(request.getParameter("recipeIDToView"));
-				System.out.println("~~~~~NavigationServlet:AddIngredient: recipeID = " + recipeIDToView);
 				
 				request.setAttribute("recipeToEdit", recipeIDToView);
 				RecipeInfo ri = rh.searchForRecipeByID(recipeIDToView); 
